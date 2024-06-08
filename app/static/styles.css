@@ -1,0 +1,46 @@
+.background {
+  background-image: url("images/background.jpeg");
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+}
+
+.form {
+  background-color: rgb(53, 95, 151, 0.9);
+  min-width: 800px;
+  color: rgb(255, 255, 255);
+}
+
+.form select {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.main-header h1 {
+  font-size: 70px;
+  color: rgb(15, 92, 125);
+}
+
+.submit-btn {
+  background-color: black;
+  color: black;
+}
+
+.predict-container {
+  background-color: rgb(53, 95, 151, 0.8);
+  border: 1px solid rgb(53, 95, 151, 0.8);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 80%;
+  height: 80%;
+}

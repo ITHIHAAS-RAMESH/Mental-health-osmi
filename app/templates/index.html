@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="background"></div>
+    <div class="w-screen h-fit main-container">
+      <div class="flex flex-col gap-5 w-screen form-container">
+        <div class="flex flex-col items-center m-auto main-header mt-10">
+          <img src="static/images/logo1.png" class="logo" />
+        </div>
+        <form
+          action="/predict"
+          method="post"
+          class="flex flex-col mx-auto mb-5 gap-2 py-10 px-5 form"
+        >
+          <div>
+            <label for="age" class="block">Age:</label>
+            <input
+              type="text"
+              id="age"
+              name="age"
+              class="w-full text-black px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label for="care_options" class="block"
+              >Do you have care options?</label
+            >
+            <div class="space-x-4">
+              <input
+                type="radio"
+                id="care_options_yes"
+                name="care_options"
+                value="2"
+              />
+              <label for="care_options_yes">Yes</label>
+              <input
+                type="radio"
+                id="care_options_no"
+                name="care_options"
+                value="0"
+              />
+              <label for="care_options_no">No</label>
+
+              <input
+                type="radio"
+                id="care_options_notsure"
+                name="care_options"
+                value="1"
+              />
+              <label for="care_options_notsure">Not Sure</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="gender" class="block">Gender:</label>
+            <select
+              id="gender"
+              name="gender"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+            >
+              <option value="1">Male</option>
+              <option value="0">Female</option>
+              <option value="2">Trans</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="no_employees" class="block">Number of Employees:</label>
+            <select
+              id="no_employees"
+              name="no_employees"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+            >
+              <option value="0">1-5</option>
+              <option value="4">6-25</option>
+              <option value="2">26-100</option>
+              <option value="1">100-500</option>
+              <option value="3">500-1000</option>
+              <option value="5">1000+</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="country" class="block">Country:</label>
+            <select
+              id="country"
+              name="country"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+            >
+              <option value="1">Australia</option>
+              <option value="2">Austria</option>
+              <option value="3">Belgium</option>
+              <option value="4">Bosnia and Herzegovina</option>
+              <option value="5">Brazil</option>
+              <option value="6">Bulgaria</option>
+              <option value="7">Canada</option>
+              <option value="8">China</option>
+              <option value="9">Colombia</option>
+              <option value="10">Costa Rica</option>
+              <option value="11">Croatia</option>
+              <option value="12">Czech Republic</option>
+              <option value="13">Denmark</option>
+              <option value="14">Finland</option>
+              <option value="15">France</option>
+              <option value="16">Georgia</option>
+              <option value="17">Germany</option>
+              <option value="18">Greece</option>
+              <option value="19">Hungary</option>
+              <option value="20">India</option>
+              <option value="21">Ireland</option>
+              <option value="22">Israel</option>
+              <option value="23">Italy</option>
+              <option value="24">Japan</option>
+              <option value="25">Latvia</option>
+              <option value="26">Mexico</option>
+              <option value="27">Moldova</option>
+              <option value="28">Netherlands</option>
+              <option value="29">New Zealand</option>
+              <option value="30">Nigeria</option>
+              <option value="31">Norway</option>
+              <option value="32">Philippines</option>
+              <option value="33">Poland</option>
+              <option value="34">Portugal</option>
+              <option value="35">Romania</option>
+              <option value="36">Russia</option>
+              <option value="37">Singapore</option>
+              <option value="38">Slovenia</option>
+              <option value="39">South Africa</option>
+              <option value="40">Spain</option>
+              <option value="41">Sweden</option>
+              <option value="42">Switzerland</option>
+              <option value="43">Thailand</option>
+              <option value="44">United Kingdom</option>
+              <option value="45">United States</option>
+              <option value="46">Uruguay</option>
+              <option value="47">Zimbabwe</option>
+            </select>
+          </div>
+          <div>
+            <label for="family_history" class="block"
+              >Family History of Mental Health Issues:</label
+            >
+            <div class="space-x-4">
+              <input
+                type="radio"
+                id="family_history_yes"
+                name="family_history"
+                value="1"
+              />
+              <label for="family_history_yes">Yes</label>
+              <input
+                type="radio"
+                id="family_history_no"
+                name="family_history"
+                value="0"
+              />
+              <label for="family_history_no">No</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="coworkers" class="block"
+              >Would you be willing to discuss a mental health issue with your
+              coworkers?</label
+            >
+            <div class="space-x-4">
+              <input
+                type="radio"
+                id="coworkers_yes"
+                name="coworkers"
+                value="2"
+              />
+              <label for="coworkers_yes">Yes</label>
+              <input
+                type="radio"
+                id="coworkers_some"
+                name="coworkers"
+                value="1"
+              />
+              <label for="coworkers_some">some of them</label>
+              <input
+                type="radio"
+                id="coworkers_no"
+                name="coworkers"
+                value="0"
+              />
+              <label for="coworkers_no">No</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="benefits" class="block"
+              >Does your employer provide mental health benefits?</label
+            >
+            <div class="space-x-4">
+              <input type="radio" id="benefits_yes" name="benefits" value="2" />
+              <label for="benefits_yes">Yes</label>
+              <input type="radio" id="benefits_no" name="benefits" value="1" />
+              <label for="benefits_no">No</label>
+              <input
+                type="radio"
+                id="benefits_dont"
+                name="benefits"
+                value="0"
+              />
+              <label for="benefits_dont">Dont know</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="anonymity" class="block"
+              >Is your anonymity protected when discussing mental health with
+              your employer?</label
+            >
+            <div class="space-x-4">
+              <input
+                type="radio"
+                id="anonymity_yes"
+                name="anonymity"
+                value="2"
+              />
+              <label for="anonymity_yes">Yes</label>
+              <input
+                type="radio"
+                id="anonymity_no"
+                name="anonymity"
+                value="1"
+              />
+
+              <label for="anonymity_no">No</label>
+
+              <input
+                type="radio"
+                id="anonymity_dont"
+                name="anonymity"
+                value="0"
+              />
+              <label for="anonymity_dont">Dont know</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="seek_help" class="block"
+              >Does your employer provide resources to learn more about mental
+              health issues and how to seek help?</label
+            >
+            <div class="space-x-4">
+              <input
+                type="radio"
+                id="seek_help_yes"
+                name="seek_help"
+                value="2"
+              />
+              <label for="seek_help_yes">Yes</label>
+              <input
+                type="radio"
+                id="seek_help_no"
+                name="seek_help"
+                value="1"
+              />
+              <label for="seek_help_no">No</label>
+              <input
+                type="radio"
+                id="seek_help_dont"
+                name="seek_help"
+                value="0"
+              />
+              <label for="seek_help_yes">Dont Know</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="mental_health_consequence" class="block"
+              >Do you think that discussing a mental health issue with your
+              employer would have negative consequences?</label
+            >
+            <div class="space-x-4">
+              <input
+                type="radio"
+                id="mental_health_consequence_yes"
+                name="mental_health_consequence"
+                value="2"
+              />
+              <label for="mental_health_consequence_yes">Yes</label>
+              <input
+                type="radio"
+                id="mental_health_consequence_no"
+                name="mental_health_consequence"
+                value="1"
+              />
+              <label for="mental_health_consequence_no">No</label>
+              <input
+                type="radio"
+                id="mental_health_consequence_maybe"
+                name="mental_health_consequence"
+                value="0"
+              />
+              <label for="mental_health_consequence_maybe">Maybe</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="wellness_program" class="block"
+              >Has your employer ever discussed mental health as part of an
+              employee wellness program?</label
+            >
+            <div class="space-x-4">
+              <input
+                type="radio"
+                id="wellness_program_yes"
+                name="wellness_program"
+                value="2"
+              />
+              <label for="wellness_program_yes">Yes</label>
+              <input
+                type="radio"
+                id="wellness_program_no"
+                name="wellness_program"
+                value="1"
+              />
+              <label for="wellness_program_no">No</label>
+              <input
+                type="radio"
+                id="wellness_program_know"
+                name="wellness_program"
+                value="0"
+              />
+              <label for="wellness_program_know">Dont Know</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="leave" class="block"
+              >How easy is it for you to take medical leave for a mental health
+              condition?</label
+            >
+            <div class="space-x-4">
+              <input type="radio" id="leave_diff" name="1" value="0" />
+              <label for="diff">Difficult</label>
+              <input type="radio" id="diff" name="1" value="0" />
+              <label for="leave_dont_know">Don't know</label>
+              <input type="radio" id="leave_dont_easy" name="1" value="2" />
+              <label for="leave_dont_easy">Easy</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="work_interfere" class="block"
+              >How often does mental health interfere with your work?</label
+            >
+            <div class="space-x-4">
+              <input
+                type="radio"
+                id="work_interfere_dontknow"
+                name="work_interfere"
+                value="0"
+              />
+              <label for="work_interfere_dontknow">Dont know</label>
+              <input
+                type="radio"
+                id="work_interfere_never"
+                name="work_interfere"
+                value="1"
+              />
+              <label for="work_interfere_never">Never</label>
+              <input
+                type="radio"
+                id="work_interfere_often"
+                name="work_interfere"
+                value="2"
+              />
+              <label for="work_interfere_often">Often</label>
+              <input
+                type="radio"
+                id="work_interfere_rarely"
+                name="work_interfere"
+                value="3"
+              />
+              <label for="work_interfere_rarely">Rarely</label>
+              <input
+                type="radio"
+                id="work_interfere_some"
+                name="work_interfere"
+                value="4"
+              />
+              <label for="work_interfere_some">Sometimes</label>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="mt-5 bg-blue-900 rounded text-white h-10"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
