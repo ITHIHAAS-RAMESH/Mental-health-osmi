@@ -21,14 +21,14 @@ def predict():
     int_features = [int(x) for x in request.form.values()]
     final = [np.array(int_features)]
     age = final[0][0].reshape(-1,1)
-    print(age)
+    
     test_scaled_set = s.transform(age)
-    print(float(test_scaled_set))
+    
     final[0][0] = float(test_scaled_set)
     
-    
+    print(final)
     output = model.predict(final)
-    print(output)
+    
     
     if output == 1:
         return render_template("result1.html")
